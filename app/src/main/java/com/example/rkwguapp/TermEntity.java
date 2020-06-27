@@ -15,6 +15,7 @@ public class TermEntity {
     private Date termStartDate;
     private Date termEndDate;
 
+
     public TermEntity(String termTitle, Date termStartDate, Date termEndDate) {
         this.termTitle = termTitle;
         this.termStartDate = termStartDate;
@@ -25,11 +26,8 @@ public class TermEntity {
         return termTitle;
     }
 
-    public Date getTermStartDate() {
-        return termStartDate;
-    }
+    public Date getTermStartDate() { return termStartDate; }
 
-    public Date getTermEndDate() {
-        return termEndDate;
-    }
+    public Date getTermEndDate() { return termEndDate; }
+
 }

@@ -1,5 +1,6 @@
 package com.example.rkwguapp;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -9,6 +10,7 @@ import java.util.Date;
 public class CourseEntity {
 
     @PrimaryKey
+    @NonNull
     private String courseTitle;
     private String associatedTerm;
     private Date courseStartDate;
