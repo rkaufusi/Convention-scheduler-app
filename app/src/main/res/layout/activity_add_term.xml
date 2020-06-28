@@ -16,4 +16,40 @@
         android:inputType="text"
         />
 
+    <TextView
+        android:id="@+id/start_date_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Date"
+        android:padding="8dp"/>
+
+    <Button
+        android:id="@+id/start_date_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Date"
+        android:padding="8dp"/>
+
+
+    <TextView
+        android:id="@+id/end_date_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="End Date"
+        android:padding="8dp"/>
+
+    <Button
+        android:id="@+id/end_date_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End Date"
+        android:padding="8dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Term"
+        android:padding="16dp"/>
+
+
 </LinearLayout>
