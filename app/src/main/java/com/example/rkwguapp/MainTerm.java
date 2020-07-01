@@ -10,11 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class MainTerm extends AppCompatActivity {
@@ -58,12 +62,5 @@ public class MainTerm extends AppCompatActivity {
 
     }
 
-  //  @Override
-  //  protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-    //    super.onActivityResult(requestCode, resultCode, data);
 
-   //     if (requestCode == ADD_TERM_REQUEST && requestCode == RESULT_OK) {
-   //         String title = data.getStringExtra(AddTerm);
-   //     }
-  //  }
 }
