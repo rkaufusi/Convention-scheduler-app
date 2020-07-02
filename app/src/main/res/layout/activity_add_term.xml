@@ -34,12 +34,6 @@
 
 
 
-    <Button
-        android:id="@+id/save_term"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save Term"
-        android:padding="16dp"/>
 
 
 </LinearLayout>

@@ -59,8 +59,33 @@ public class MainTerm extends AppCompatActivity {
             }
         });
 
-
     }
 
 
+    // don't think it makes it here
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == ADD_TERM_REQUEST && resultCode == RESULT_OK) {
+            String title = data.getStringExtra(AddTerm.EXTRA_TITLE);
+            String date = data.getStringExtra(AddTerm.EXTRA_DATE);
+            String date2 = data.getStringExtra(AddTerm.EXTRA_DATE2);
+
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+            try {
+                Date dateFormat = formatter.parse(date);
+                System.out.println("Date is: "+dateFormat);
+                Date date2Format = formatter.parse(date2);
+                System.out.println("Date2 is: "+dateFormat);
+                TermEntity term = new TermEntity(title, dateFormat, date2Format);
+                termViewModel.insert(term);
+
+                TermEntity termEntity = new TermEntity(title, dateFormat, date2Format);
+                termViewModel.insert(termEntity);
+                Toast.makeText(this, "Term Saved", Toast.LENGTH_SHORT);
+            } catch (ParseException e) {e.printStackTrace();}
+
+        } else { Toast.makeText(this, "Term Not Saved", Toast.LENGTH_SHORT);}
+    }
 }

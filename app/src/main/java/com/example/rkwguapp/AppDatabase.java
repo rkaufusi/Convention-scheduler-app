@@ -48,9 +48,9 @@ private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() 
         }
             @Override
             protected Void doInBackground(Void... voids) {
-            // new
-                Date date;
-                SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yy");
+
+
+            // date format issue
 
                 termDao.insert(new TermEntity("Title 1", new Date(2020), new Date(2020)));
                 termDao.insert(new TermEntity("Title 2", new Date(2020), new Date(2020)));
