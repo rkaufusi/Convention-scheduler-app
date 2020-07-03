@@ -6,22 +6,22 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
 //import android.support.design.widget.Snackbar;
-//import android.support.v7.app.AppCompatActivity;
 //import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -39,6 +39,7 @@ public class AddTerm extends AppCompatActivity {
     TextView textView2;
     DatePickerDialog.OnDateSetListener date;
     DatePickerDialog.OnDateSetListener date2;
+    TermViewModel termViewModel;
 
     private EditText editTermTitle;
 
@@ -47,12 +48,12 @@ public class AddTerm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_term);
 
-        // close button coming soon
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.close_button);
         setTitle("Add Term");
 
-
+        editTermTitle = findViewById(R.id.edit_term_title);
         textView = findViewById(R.id.start_date_textview);
+        textView2 = findViewById(R.id.end_date_textview);
 
         date = new DatePickerDialog.OnDateSetListener() {
 
@@ -61,18 +62,11 @@ public class AddTerm extends AppCompatActivity {
                 c.set(Calendar.YEAR, year);
                 c.set(Calendar.MONTH, monthOfYear);
                 c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String dateFormat = "MM/dd/yy";
-                SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
-                Intent intent=new Intent(AddTerm.this,TermStartFragment.class);
-                intent.putExtra("key",sdf.format(c.getTime()));
-                PendingIntent sender= PendingIntent.getBroadcast(AddTerm.this,0,intent,0);
-                AlarmManager alarmManager=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
-                long trigger=c.getTimeInMillis();
-                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
-                updateLabel();
+                changeStart();
             }
 
         };
+
         textView.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -83,8 +77,6 @@ public class AddTerm extends AppCompatActivity {
             }
         });
 
-        textView2 = findViewById(R.id.end_date_textview);
-
         date2 = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -92,19 +84,10 @@ public class AddTerm extends AppCompatActivity {
                 c2.set(Calendar.YEAR, year);
                 c2.set(Calendar.MONTH, monthOfYear);
                 c2.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String dateFormat = "MM/dd/yy";
-                SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
-               // Intent intent=new Intent(AddTerm.this,TermEndFragment.class);
-               // intent.putExtra("key",sdf.format(c2.getTime()));
-               // PendingIntent sender= PendingIntent.getBroadcast(AddTerm.this,1,intent,0);
-               // AlarmManager alarmManager=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
-               // long trigger=c2.getTimeInMillis();
-               // alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
-                updateLabel2();
+                changeEnd();
             }
 
         };
-
         textView2.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -114,7 +97,9 @@ public class AddTerm extends AppCompatActivity {
                         c2.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -138,6 +123,7 @@ public class AddTerm extends AppCompatActivity {
         finish();
     }
 
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -149,16 +135,15 @@ public class AddTerm extends AppCompatActivity {
         }
     }
 
-    private void updateLabel() {
+    private void changeStart() {
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         textView.setText(sdf.format(c.getTime()));
     }
-    private void updateLabel2() {
+    private void changeEnd() {
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         textView2.setText(sdf.format(c2.getTime()));
     }
-
 
 }

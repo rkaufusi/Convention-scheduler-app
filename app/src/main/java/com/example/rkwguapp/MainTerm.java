@@ -10,22 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 public class MainTerm extends AppCompatActivity {
     public static final int ADD_TERM_REQUEST = 1;
     private TermViewModel termViewModel;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,17 +47,18 @@ public class MainTerm extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<TermEntity> termEntities) {
                 termAdapter.setTermEntities(termEntities);
-                Toast.makeText(MainTerm.this,"test", Toast.LENGTH_LONG).show();
+              //  Toast.makeText(MainTerm.this,"test", Toast.LENGTH_LONG).show();
 
             }
         });
 
+
     }
 
 
-    // don't think it makes it here
+    // don't think it makes it here took off @Nullable
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == ADD_TERM_REQUEST && resultCode == RESULT_OK) {
@@ -72,19 +66,15 @@ public class MainTerm extends AppCompatActivity {
             String date = data.getStringExtra(AddTerm.EXTRA_DATE);
             String date2 = data.getStringExtra(AddTerm.EXTRA_DATE2);
 
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
-            try {
-                Date dateFormat = formatter.parse(date);
-                System.out.println("Date is: "+dateFormat);
-                Date date2Format = formatter.parse(date2);
-                System.out.println("Date2 is: "+dateFormat);
-                TermEntity term = new TermEntity(title, dateFormat, date2Format);
+                Date start = DateConverter.toDateType(date);
+                Date end = DateConverter.toDateType(date2);
+
+                TermEntity term = new TermEntity(title, start, end);
                 termViewModel.insert(term);
 
-                TermEntity termEntity = new TermEntity(title, dateFormat, date2Format);
-                termViewModel.insert(termEntity);
+
                 Toast.makeText(this, "Term Saved", Toast.LENGTH_SHORT);
-            } catch (ParseException e) {e.printStackTrace();}
+
 
         } else { Toast.makeText(this, "Term Not Saved", Toast.LENGTH_SHORT);}
     }
