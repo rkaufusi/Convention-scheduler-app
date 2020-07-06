@@ -1,9 +1,6 @@
 package com.example.rkwguapp;
 
-import android.app.AlarmManager;
 import android.app.DatePickerDialog;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 //import android.support.design.widget.Snackbar;
@@ -13,7 +10,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,14 +17,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
-public class AddTerm extends AppCompatActivity {
+public class AddEditTerm extends AppCompatActivity {
     public static final String EXTRA_TITLE = "com.example.rkwguapp.EXTRA_TITLE";
     public static final String EXTRA_DATE = "com.example.rkwguapp.EXTRA_DATE";
     public static final String EXTRA_DATE2 = "com.example.rkwguapp.EXTRA_DATE2";
@@ -48,12 +42,22 @@ public class AddTerm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_term);
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.close_button);
-        setTitle("Add Term");
-
         editTermTitle = findViewById(R.id.edit_term_title);
         textView = findViewById(R.id.start_date_textview);
         textView2 = findViewById(R.id.end_date_textview);
+
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.close_button);
+
+        Intent intent = getIntent();
+
+        if (intent.hasExtra(EXTRA_TITLE)) {
+            setTitle("Edit Term");
+            editTermTitle.setText(intent.getStringExtra(EXTRA_TITLE));
+            textView.setText(intent.getStringExtra(EXTRA_DATE));
+            textView2.setText(intent.getStringExtra(EXTRA_DATE2));
+        } else {
+            setTitle("Add Term");
+        }
 
         date = new DatePickerDialog.OnDateSetListener() {
 
@@ -71,7 +75,7 @@ public class AddTerm extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(AddTerm.this, date, c
+                new DatePickerDialog(AddEditTerm.this, date, c
                         .get(Calendar.YEAR), c.get(Calendar.MONTH),
                         c.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -92,14 +96,12 @@ public class AddTerm extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(AddTerm.this, date2, c2
+                new DatePickerDialog(AddEditTerm.this, date2, c2
                         .get(Calendar.YEAR), c2.get(Calendar.MONTH),
                         c2.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -122,7 +124,6 @@ public class AddTerm extends AppCompatActivity {
         setResult(RESULT_OK, data);
         finish();
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

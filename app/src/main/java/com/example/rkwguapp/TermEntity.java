@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity(tableName = "term_table")
@@ -22,11 +23,16 @@ public class TermEntity {
         this.termEndDate = termEndDate;
     }
 
-    public String getTermTitle() {
-        return termTitle;
-    }
+    public void setTermTitle(String termTitle) {this.termTitle = termTitle; }
 
-    public Date getTermStartDate() { return termStartDate; }
+    // test making setters
+
+
+    public String getTermTitle() { return termTitle; }
+
+    public Date getTermStartDate() {
+        return termStartDate;
+    }
 
     public Date getTermEndDate() { return termEndDate; }
 

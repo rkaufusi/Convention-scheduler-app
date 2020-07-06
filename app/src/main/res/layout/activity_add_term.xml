@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".AddTerm">
+    tools:context=".AddEditTerm">
 
     <EditText
         android:id="@+id/edit_term_title"

@@ -18,6 +18,7 @@ public class DateConverter {
         return date == null ? null : date.getTime();
     }
 
+    // not sure if used
     public static Date toDateType(String dateString){
 
         Date date = null;
