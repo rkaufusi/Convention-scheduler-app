@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -74,8 +76,15 @@ public class MainTerm extends AppCompatActivity {
             public void onItemClick(TermEntity termEntity) {
                 Intent intent = new Intent(MainTerm.this, AddEditTerm.class);
                 intent.putExtra(AddEditTerm.EXTRA_TITLE, termEntity.getTermTitle());
-                intent.putExtra(AddEditTerm.EXTRA_DATE, termEntity.getTermStartDate());
-                intent.putExtra(AddEditTerm.EXTRA_DATE2, termEntity.getTermEndDate());
+              // String formatter
+                String pattern = "MM-dd-yyyy";
+                SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+                String date = sdf.format(termEntity.getTermStartDate());
+                intent.putExtra(AddEditTerm.EXTRA_DATE, date);
+                String date2 = sdf.format((termEntity.getTermEndDate()));
+                intent.putExtra(AddEditTerm.EXTRA_DATE2, date2);
+              // intent.putExtra(AddEditTerm.EXTRA_DATE, termEntity.getTermStartDate());
+               // intent.putExtra(AddEditTerm.EXTRA_DATE2, termEntity.getTermEndDate());
                 startActivityForResult(intent, EDIT_TERM_REQUEST);
             }
         });

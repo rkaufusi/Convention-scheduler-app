@@ -25,14 +25,9 @@ public class TermEntity {
 
     public void setTermTitle(String termTitle) {this.termTitle = termTitle; }
 
-    // test making setters
-
-
     public String getTermTitle() { return termTitle; }
 
-    public Date getTermStartDate() {
-        return termStartDate;
-    }
+    public Date getTermStartDate() { return termStartDate; }
 
     public Date getTermEndDate() { return termEndDate; }
 

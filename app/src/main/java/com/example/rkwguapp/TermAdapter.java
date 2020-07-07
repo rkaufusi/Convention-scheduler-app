@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,8 +47,18 @@ public class TermAdapter extends ListAdapter<TermEntity, TermAdapter.TermHolder>
     public void onBindViewHolder(@NonNull TermHolder holder, int position) {
         TermEntity currentTermEntity = getItem(position);
         holder.textViewTermTitle.setText(currentTermEntity.getTermTitle());
-        holder.textViewTermStart.setText(String.valueOf(currentTermEntity.getTermStartDate()));
-        holder.textViewTermEnd.setText(String.valueOf(currentTermEntity.getTermEndDate()));
+
+       // String formatter =
+        String pattern = "MM-dd-yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        String date = sdf.format(currentTermEntity.getTermStartDate());
+        holder.textViewTermStart.setText(date);
+        String date2 = sdf.format(currentTermEntity.getTermEndDate());
+        holder.textViewTermEnd.setText(date2);
+
+
+       // holder.textViewTermStart.setText(String.valueOf(currentTermEntity.getTermStartDate()));
+      //  holder.textViewTermEnd.setText(String.valueOf(currentTermEntity.getTermEndDate()));
     }
 
     public TermEntity getTermAt(int position) {

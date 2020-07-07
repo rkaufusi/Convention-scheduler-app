@@ -23,7 +23,6 @@ public class CourseEntity {
 
     public CourseEntity(String courseTitle, String associatedTerm, Date courseStartDate, Date courseEndDate, String courseStatus, String courseMentor, String courseMentorPhone, String courseMentorEmail, String courseNote) {
         this.courseTitle = courseTitle;
-        // not sure if i need this
         this.associatedTerm = associatedTerm;
         this.courseStartDate = courseStartDate;
         this.courseEndDate = courseEndDate;

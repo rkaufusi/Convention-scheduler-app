@@ -137,12 +137,12 @@ public class AddEditTerm extends AppCompatActivity {
     }
 
     private void changeStart() {
-        String myFormat = "MM/dd/yy";
+        String myFormat = "MM/dd/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         textView.setText(sdf.format(c.getTime()));
     }
     private void changeEnd() {
-        String myFormat = "MM/dd/yy";
+        String myFormat = "MM/dd/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         textView2.setText(sdf.format(c2.getTime()));
     }
