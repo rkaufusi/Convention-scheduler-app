@@ -8,6 +8,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class AddEditCourses extends AppCompatActivity {
@@ -68,6 +71,10 @@ public class AddEditCourses extends AppCompatActivity {
 
     private TextView mills;
 
+    TermEntity termEntity;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,11 +90,6 @@ public class AddEditCourses extends AppCompatActivity {
         editMentorPhone = findViewById(R.id.mentor_phone_textview);
         editMentorEmail = findViewById(R.id.mentor_email_textview);
         editNote = findViewById(R.id.note_textview);
-
-        startNotification = findViewById(R.id.start_notification);
-        endNotification = findViewById(R.id.end_notification);
-        shareNote = findViewById(R.id.share_note);
-
 
 
         Intent intent = getIntent();
@@ -152,26 +154,7 @@ public class AddEditCourses extends AppCompatActivity {
             }
         });
 
-        // share note via text or sms
-        Button shareNoteButton = (Button) findViewById(R.id.share_note);
-        shareNoteButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Do something in response to button click
-                String editCourseNote = editNote.getText().toString();
-                String title = editCourseTitle.getText().toString();
 
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, editCourseNote);
-
-                sendIntent.putExtra(Intent.EXTRA_TITLE, title);
-                sendIntent.setType("text/plain");
-
-                Intent shareIntent = Intent.createChooser(sendIntent, null);
-                startActivity(shareIntent);
-
-            }
-        });
 
     }
 
@@ -200,6 +183,9 @@ public class AddEditCourses extends AppCompatActivity {
             Toast.makeText(this, "Please make sure every field is complete", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        // insert logic to validate existing Term
+
 
         Intent data = new Intent();
         data.putExtra(EXTRA_TITLE_COURSE, title);

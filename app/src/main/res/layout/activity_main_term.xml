@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainTerm">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:nestedScrollingEnabled="true"
         tools:listitem="@layout/term_individual"/>
 
-    </ScrollView>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_add_term"
@@ -29,3 +30,4 @@
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+

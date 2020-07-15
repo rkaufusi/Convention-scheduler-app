@@ -81,8 +81,8 @@ private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() 
                 termDao.insert(new TermEntity("Sample 1", date1, termEnd));
                 termDao.insert(new TermEntity("Sample 2", date2, termEnd1));
 
-                courseDao.insert(new CourseEntity("c196", "Sample 1", date3, courseEnd, "good", "Steve", "111-111-1111", "email", "the course note"));
-                courseDao.insert(new CourseEntity("c296", "Sample 1", date4, courseEnd1, "good", "Jill", "222-111-1111", "email", "course note"));
+                courseDao.insert(new CourseEntity("c196", "Sample 1", date3, courseEnd, "good", "Steve", "111-111-1111", "email@email.com", "the course note"));
+                courseDao.insert(new CourseEntity("c296", "Sample 1", date4, courseEnd1, "good", "Jill", "222-111-1111", "email@email.com", "course note"));
 
                 assessmentDao.insert(new AssessmentEntity("English exam", "C196", date5));
                 assessmentDao.insert(new AssessmentEntity("Geometry", "C296", date6));
