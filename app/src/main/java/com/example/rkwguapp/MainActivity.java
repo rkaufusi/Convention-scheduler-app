@@ -15,11 +15,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // button 1 Terms
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button buttonTerms = (Button) findViewById(R.id.button);
+        buttonTerms.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
                 startActivity(new Intent(MainActivity.this, MainTerm.class));
+            }
+        });
+
+        // button Courses
+        Button buttonCourses = (Button) findViewById(R.id.button1);
+        buttonCourses.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+                startActivity(new Intent(MainActivity.this, MainCourse.class));
+            }
+        });
+
+        // button Assessments
+        Button buttonAssessments = (Button) findViewById(R.id.button2);
+        buttonAssessments.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+                startActivity(new Intent(MainActivity.this, MainAssessment.class));
             }
         });
 

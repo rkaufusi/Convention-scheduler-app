@@ -30,7 +30,8 @@ public class TermAdapter extends ListAdapter<TermEntity, TermAdapter.TermHolder>
 
         @Override
         public boolean areContentsTheSame(@NonNull TermEntity oldItem, @NonNull TermEntity newItem) {
-            return oldItem.getTermStartDate().equals(newItem.getTermStartDate()) &&
+            return oldItem.getTermTitle().equals(newItem.getTermTitle()) &&
+                    oldItem.getTermStartDate().equals(newItem.getTermStartDate()) &&
                     oldItem.getTermEndDate().equals(newItem.getTermEndDate());
         }
     };
@@ -48,17 +49,13 @@ public class TermAdapter extends ListAdapter<TermEntity, TermAdapter.TermHolder>
         TermEntity currentTermEntity = getItem(position);
         holder.textViewTermTitle.setText(currentTermEntity.getTermTitle());
 
-       // String formatter =
+       // String formatter
         String pattern = "MM-dd-yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         String date = sdf.format(currentTermEntity.getTermStartDate());
         holder.textViewTermStart.setText(date);
         String date2 = sdf.format(currentTermEntity.getTermEndDate());
         holder.textViewTermEnd.setText(date2);
-
-
-       // holder.textViewTermStart.setText(String.valueOf(currentTermEntity.getTermStartDate()));
-      //  holder.textViewTermEnd.setText(String.valueOf(currentTermEntity.getTermEndDate()));
     }
 
     public TermEntity getTermAt(int position) {

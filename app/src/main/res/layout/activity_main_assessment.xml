@@ -4,28 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainTerm">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+    tools:context=".MainAssessment">
+    
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recycler_view_assess"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/term_individual"/>
-
-    </ScrollView>
-
+        tools:listitem="@layout/assessment_individual"/>
+    
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button_add_term"
+        android:id="@+id/button_add_assess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/add_button"
         android:layout_gravity="bottom|end"
         android:layout_margin="32dp"/>
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

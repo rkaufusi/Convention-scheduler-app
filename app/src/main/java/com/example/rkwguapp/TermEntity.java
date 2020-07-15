@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity(tableName = "term_table")
@@ -23,7 +22,7 @@ public class TermEntity {
         this.termEndDate = termEndDate;
     }
 
-    public void setTermTitle(String termTitle) {this.termTitle = termTitle; }
+    //public void setTermTitle(String termTitle) {this.termTitle = termTitle; }
 
     public String getTermTitle() { return termTitle; }
 

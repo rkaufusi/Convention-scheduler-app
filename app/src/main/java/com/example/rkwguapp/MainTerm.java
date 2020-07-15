@@ -48,6 +48,8 @@ public class MainTerm extends AppCompatActivity {
         final TermAdapter termAdapter = new TermAdapter();
         recyclerView.setAdapter(termAdapter);
 
+
+
         termViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(TermViewModel.class);
         termViewModel.getAllTerms().observe(this, new Observer<List<TermEntity>>() {
             @Override
@@ -83,8 +85,8 @@ public class MainTerm extends AppCompatActivity {
                 intent.putExtra(AddEditTerm.EXTRA_DATE, date);
                 String date2 = sdf.format((termEntity.getTermEndDate()));
                 intent.putExtra(AddEditTerm.EXTRA_DATE2, date2);
-              // intent.putExtra(AddEditTerm.EXTRA_DATE, termEntity.getTermStartDate());
-               // intent.putExtra(AddEditTerm.EXTRA_DATE2, termEntity.getTermEndDate());
+
+               // intent.putExtra(AddEditTerm.EXTRA_ASSOCIATED_COURSES, TermDao.getTermCoursesRelation());
                 startActivityForResult(intent, EDIT_TERM_REQUEST);
             }
         });
@@ -118,7 +120,7 @@ public class MainTerm extends AppCompatActivity {
             Date end = DateConverter.toDateType(date2);
 
             TermEntity term = new TermEntity(title, start, end);
-            term.setTermTitle(title);
+            //term.setTermTitle(title);
 
             termViewModel.update(term);
 

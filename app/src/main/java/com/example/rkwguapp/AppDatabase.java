@@ -30,7 +30,7 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         return instance;
     }
-// new code
+
 private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
@@ -42,19 +42,50 @@ private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() 
 
         private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
             private TermDao termDao;
+            private CourseDao courseDao;
+            private AssessmentDao assessmentDao;
 
         private PopulateDbAsyncTask(AppDatabase db) {
             termDao = db.termDao();
+            courseDao = db.courseDao();
+            assessmentDao = db.assessmentDao();
         }
+
             @Override
             protected Void doInBackground(Void... voids) {
 
 
-            // date format issue
+            String strDate = "06/01/2020";
+            String strDate1 = "01/01/2021";
+            String strDate2 = "07/20/2020";
+            String strDate3 = "09/05/2020";
+            String strDate4 = "08/30/2020";
+            String strDate5 = "10/15/2020";
 
-                termDao.insert(new TermEntity("Title 1", new Date(2020), new Date(2020)));
-                termDao.insert(new TermEntity("Title 2", new Date(2020), new Date(2020)));
-                termDao.insert(new TermEntity("Title 3", new Date(2021), new Date(2021)));
+            String strDate6 = "12/31/2020";
+            String strDate7 = "06/01/2021";
+            String strDate8 = "10/05/2020";
+            String strDate9 = "09/30/2020";
+
+                Date date1 = DateConverter.toDateType(strDate);
+                Date date2 = DateConverter.toDateType(strDate1);
+                Date date3 = DateConverter.toDateType(strDate2);
+                Date date4 = DateConverter.toDateType(strDate3);
+                Date date5 = DateConverter.toDateType(strDate4);
+                Date date6 = DateConverter.toDateType(strDate5);
+                Date termEnd = DateConverter.toDateType(strDate6);
+                Date termEnd1 = DateConverter.toDateType(strDate7);
+                Date courseEnd = DateConverter.toDateType(strDate8);
+                Date courseEnd1 = DateConverter.toDateType(strDate9);
+
+                termDao.insert(new TermEntity("Sample 1", date1, termEnd));
+                termDao.insert(new TermEntity("Sample 2", date2, termEnd1));
+
+                courseDao.insert(new CourseEntity("c196", "Sample 1", date3, courseEnd, "good", "Steve", "111-111-1111", "email", "the course note"));
+                courseDao.insert(new CourseEntity("c296", "Sample 1", date4, courseEnd1, "good", "Jill", "222-111-1111", "email", "course note"));
+
+                assessmentDao.insert(new AssessmentEntity("English exam", "C196", date5));
+                assessmentDao.insert(new AssessmentEntity("Geometry", "C296", date6));
                 return null;
             }
     }

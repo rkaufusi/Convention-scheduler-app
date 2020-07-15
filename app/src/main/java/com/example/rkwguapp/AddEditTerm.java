@@ -3,8 +3,6 @@ package com.example.rkwguapp;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-//import android.support.design.widget.Snackbar;
-//import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
@@ -13,7 +11,7 @@ import android.view.MenuItem;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,14 +24,15 @@ public class AddEditTerm extends AppCompatActivity {
     public static final String EXTRA_TITLE = "com.example.rkwguapp.EXTRA_TITLE";
     public static final String EXTRA_DATE = "com.example.rkwguapp.EXTRA_DATE";
     public static final String EXTRA_DATE2 = "com.example.rkwguapp.EXTRA_DATE2";
+    public static final String EXTRA_ASSOCIATED_COURSES = "com.example.rkwguapp.EXTRA_ASSOCIATED_COURSES";
 
     final Calendar c = Calendar.getInstance();
     final Calendar c2 = Calendar.getInstance();
     TextView textView;
     TextView textView2;
+    TextView associatedCourses;
     DatePickerDialog.OnDateSetListener date;
     DatePickerDialog.OnDateSetListener date2;
-    TermViewModel termViewModel;
 
     private EditText editTermTitle;
 
@@ -45,8 +44,9 @@ public class AddEditTerm extends AppCompatActivity {
         editTermTitle = findViewById(R.id.edit_term_title);
         textView = findViewById(R.id.start_date_textview);
         textView2 = findViewById(R.id.end_date_textview);
+        associatedCourses = findViewById(R.id.associated_courses);
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.close_button);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic__close_2);
 
         Intent intent = getIntent();
 
@@ -55,6 +55,7 @@ public class AddEditTerm extends AppCompatActivity {
             editTermTitle.setText(intent.getStringExtra(EXTRA_TITLE));
             textView.setText(intent.getStringExtra(EXTRA_DATE));
             textView2.setText(intent.getStringExtra(EXTRA_DATE2));
+            associatedCourses.setText((intent.getStringExtra(EXTRA_ASSOCIATED_COURSES)));
         } else {
             setTitle("Add Term");
         }
@@ -116,6 +117,11 @@ public class AddEditTerm extends AppCompatActivity {
         String date2 = textView2.getText().toString();
 
         // insert logic for no empty values
+        if (title.trim().isEmpty() || date.trim().isEmpty() || date2.trim().isEmpty()) {
+            Toast.makeText(this, "Please insert a title, start and end date", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Intent data = new Intent();
         data.putExtra(EXTRA_TITLE, title);
         data.putExtra(EXTRA_DATE, date);

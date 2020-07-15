@@ -13,8 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Term Title"
-        android:inputType="text"
-        />
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/start_date_textview"
@@ -24,7 +23,6 @@
         android:padding="8dp"/>
 
 
-
     <TextView
         android:id="@+id/end_date_textview"
         android:layout_width="match_parent"
@@ -32,10 +30,16 @@
         android:text="End Date"
         android:padding="8dp"/>
 
+    <TextView
+        android:id="@+id/associated_courses_Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Term's Courses"/>
 
-
-
-
+    <TextView
+        android:id="@+id/associated_courses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

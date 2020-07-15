@@ -34,9 +34,13 @@ public class CourseEntity {
 
     }
 
-    public String getCourseTitle() {
-        return courseTitle;
-    }
+    // lone setter
+
+    public void setCourseTitle(String courseTitle) { this.courseTitle = courseTitle; }
+
+    //getters
+
+    public String getCourseTitle() { return courseTitle; }
 
     public String getAssociatedTerm() {
         return associatedTerm;
@@ -69,4 +73,5 @@ public class CourseEntity {
     public String getCourseNote() {
         return courseNote;
     }
+
 }

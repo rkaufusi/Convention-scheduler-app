@@ -2,4 +2,8 @@
     <string name="app_name">RKWGUapp</string>
     <string name="button">Terms</string>
     <string name="Title">WGU</string>
+    <string name="button1">Courses</string>
+    <string name="button2">Assessments</string>
+    <string name="channel_name">notification channel</string>
+    <string name="channel_description">notification channel description</string>
 </resources>

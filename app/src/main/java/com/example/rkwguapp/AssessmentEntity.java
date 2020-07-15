@@ -17,21 +17,17 @@ public class AssessmentEntity {
 
     public AssessmentEntity(String assessmentsTitle, String associatedCourse, Date assessmentDueDate) {
         this.assessmentsTitle = assessmentsTitle;
-        // unsure if needed
         this.associatedCourse = associatedCourse;
         this.assessmentDueDate = assessmentDueDate;
 
     }
+    // lone setter
 
-    public String getAssociatedCourse() {
-        return associatedCourse;
-    }
+    public void setAssessmentsTitle(String assessmentsTitle) {this.assessmentsTitle = assessmentsTitle; }
 
-    public String getAssessmentsTitle() {
-        return assessmentsTitle;
-    }
+    public String getAssociatedCourse() { return associatedCourse; }
 
-    public Date getAssessmentDueDate() {
-        return assessmentDueDate;
-    }
+    public String getAssessmentsTitle() { return assessmentsTitle; }
+
+    public Date getAssessmentDueDate() { return assessmentDueDate; }
 }
