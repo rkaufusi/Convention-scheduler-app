@@ -84,12 +84,6 @@
         android:gravity="start|top"
         android:inputType="textMultiLine"/>
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:prompt="Choose Term"
-        />
 
 
 </LinearLayout>

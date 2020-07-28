@@ -75,6 +75,7 @@ public class MainCourse extends AppCompatActivity {
             @Override
             public void onItemClick(CourseEntity courseEntity) {
                 Intent intent = new Intent(MainCourse.this, AddEditCourses.class);
+                intent.putExtra(AddEditCourses.EXTRA_ID_C, courseEntity.getCourseId());
                 intent.putExtra(AddEditCourses.EXTRA_TITLE_COURSE, courseEntity.getCourseTitle());
                 // String formatter
                 String pattern = "MM-dd-yyyy";
@@ -91,6 +92,8 @@ public class MainCourse extends AppCompatActivity {
                 intent.putExtra(AddEditCourses.EXTRA_PHONE, courseEntity.getCourseMentorPhone());
                 intent.putExtra(AddEditCourses.EXTRA_EMAIL, courseEntity.getCourseMentorEmail());
                 intent.putExtra(AddEditCourses.EXTRA_NOTE, courseEntity.getCourseNote());
+
+                //intent.putExtra(AddEditCourses.EXTRA_NOTE, courseEntity.getCourseNote())
 
                 startActivityForResult(intent, EDIT_COURSE_REQUEST);
             }
@@ -123,7 +126,7 @@ public class MainCourse extends AppCompatActivity {
             Toast.makeText(this, "Course Saved", Toast.LENGTH_SHORT).show();
 
         } else if (requestCode == EDIT_COURSE_REQUEST && resultCode == RESULT_OK) {
-
+            int id = data.getIntExtra(AddEditCourses.EXTRA_ID_C, -1);
             String title = data.getStringExtra(AddEditCourses.EXTRA_TITLE_COURSE);
             String associatedTerm = data.getStringExtra(AddEditCourses.EXTRA_TERM);
             String date = data.getStringExtra(AddEditCourses.EXTRA_DATE_COURSE);
@@ -138,8 +141,7 @@ public class MainCourse extends AppCompatActivity {
             Date end = DateConverter.toDateType(date2);
 
             CourseEntity course = new CourseEntity(title, associatedTerm, start, end, courseStatus, mentorName, mentorPhone, mentorEmail, courseNote);
-            course.setCourseTitle(title);
-
+            course.setCourseId(id);
             courseViewModel.update(course);
 
             Toast.makeText(this, "Course Updated", Toast.LENGTH_SHORT).show();

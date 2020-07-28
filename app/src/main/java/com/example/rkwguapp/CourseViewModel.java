@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CourseViewModel extends AndroidViewModel {
     private AppRepository repository;
-    private LiveData<List<CourseEntity>> allCourses;
+    public static LiveData<List<CourseEntity>> allCourses;
 
     public CourseViewModel(@NonNull Application application) {
         super(application);
@@ -24,5 +24,5 @@ public class CourseViewModel extends AndroidViewModel {
 
     public void delete(CourseEntity courseEntity) { repository.delete(courseEntity); }
 
-    public LiveData<List<CourseEntity>> getAllCourses() { return allCourses; }
+    public static LiveData<List<CourseEntity>> getAllCourses() { return allCourses; }
 }

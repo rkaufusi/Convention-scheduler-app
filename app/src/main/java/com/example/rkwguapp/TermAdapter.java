@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TermAdapter extends ListAdapter<TermEntity, TermAdapter.TermHolder> {
-  //can delete  private List<TermEntity> termEntities = new ArrayList<>();
+
     private OnItemClickListener listener;
 
     public TermAdapter() {
@@ -57,6 +57,18 @@ public class TermAdapter extends ListAdapter<TermEntity, TermAdapter.TermHolder>
         String date2 = sdf.format(currentTermEntity.getTermEndDate());
         holder.textViewTermEnd.setText(date2);
     }
+    /*
+    public void setCourses(List<TermEntity> coursesInTerm) {
+        mTerms = coursesInTerm;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public int getItemCount() {
+        if (mTerms != null)
+            return mTerms.size();
+        else return 0;
+    } */
 
     public TermEntity getTermAt(int position) {
         return getItem(position);
@@ -89,6 +101,21 @@ public class TermAdapter extends ListAdapter<TermEntity, TermAdapter.TermHolder>
     public interface OnItemClickListener {
         void onItemClick(TermEntity termEntity);
     }
+
+/*
+    private List<TermEntity> courseList;
+
+    public void setCourses(List<TermEntity> courses) {
+        courseList = courses;
+        notifyDataSetChanged();
+    }
+
+    public int getItemCount() {
+        if (courseList != null)
+            return courseList.size();
+        else return 0;
+    } */
+
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;

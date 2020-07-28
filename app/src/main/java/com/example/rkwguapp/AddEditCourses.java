@@ -17,10 +17,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +34,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class AddEditCourses extends AppCompatActivity {
+    public static final String EXTRA_ID_C = "com.example.rkwguapp.EXTRA_ID_C";
     public static final String EXTRA_TITLE_COURSE = "com.example.rkwguapp.EXTRA_TITLE_COURSE";
     public static final String EXTRA_DATE_COURSE = "com.example.rkwguapp.EXTRA_DATE_COURSE";
     public static final String EXTRA_DATE2_COURSE = "com.example.rkwguapp.EXTRA_DATE2_COURSE";
@@ -53,10 +52,6 @@ public class AddEditCourses extends AppCompatActivity {
 
     TextView textViewCourse;
     TextView textView2Course;
-
-    Button startNotification;
-    Button endNotification;
-    Button shareNote;
 
     DatePickerDialog.OnDateSetListener date;
     DatePickerDialog.OnDateSetListener date2;
@@ -198,6 +193,11 @@ public class AddEditCourses extends AppCompatActivity {
         data.putExtra(EXTRA_EMAIL, editCourseEmail);
         data.putExtra(EXTRA_NOTE, editCourseNote);
 
+        int id = getIntent().getIntExtra(EXTRA_ID_C, -1);
+        if (id != -1) {
+            data.putExtra(EXTRA_ID_C, id);
+        }
+
         setResult(RESULT_OK, data);
         finish();
     }
@@ -276,12 +276,12 @@ public class AddEditCourses extends AppCompatActivity {
     }
 
     private void changeStart() {
-        String myFormat = "MM/dd/yyyy";
+        String myFormat = "MM-dd-yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         textViewCourse.setText(sdf.format(c.getTime()));
     }
     private void changeEnd() {
-        String myFormat = "MM/dd/yyyy";
+        String myFormat = "MM-dd-yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         textView2Course.setText(sdf.format(c2.getTime()));
     }

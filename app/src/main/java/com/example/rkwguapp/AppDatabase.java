@@ -10,8 +10,6 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -23,6 +21,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract TermDao termDao();
     public abstract CourseDao courseDao();
     public abstract AssessmentDao assessmentDao();
+
 
     public static synchronized AppDatabase getInstance(Context context) {
         if (instance == null) {
@@ -45,27 +44,29 @@ private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() 
             private CourseDao courseDao;
             private AssessmentDao assessmentDao;
 
+
         private PopulateDbAsyncTask(AppDatabase db) {
             termDao = db.termDao();
             courseDao = db.courseDao();
             assessmentDao = db.assessmentDao();
+
         }
 
             @Override
             protected Void doInBackground(Void... voids) {
 
 
-            String strDate = "06/01/2020";
-            String strDate1 = "01/01/2021";
-            String strDate2 = "07/20/2020";
-            String strDate3 = "09/05/2020";
-            String strDate4 = "08/30/2020";
-            String strDate5 = "10/15/2020";
+            String strDate = "06-01-2020";
+            String strDate1 = "01-01-2021";
+            String strDate2 = "07-20-2020";
+            String strDate3 = "09-05-2020";
+            String strDate4 = "08-30-2020";
+            String strDate5 = "10-15-2020";
 
-            String strDate6 = "12/31/2020";
-            String strDate7 = "06/01/2021";
-            String strDate8 = "10/05/2020";
-            String strDate9 = "09/30/2020";
+            String strDate6 = "12-31-2020";
+            String strDate7 = "06-01-2021";
+            String strDate8 = "10-05-2020";
+            String strDate9 = "09-30-2020";
 
                 Date date1 = DateConverter.toDateType(strDate);
                 Date date2 = DateConverter.toDateType(strDate1);

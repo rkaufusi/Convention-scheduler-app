@@ -11,6 +11,7 @@ import java.util.List;
 public class TermViewModel extends AndroidViewModel {
     private AppRepository repository;
     private LiveData<List<TermEntity>> allTerms;
+    private  LiveData<List<CourseEntity>> allTermsCourses;
 
     public TermViewModel(@NonNull Application application) {
         super(application);
@@ -31,4 +32,6 @@ public class TermViewModel extends AndroidViewModel {
     public LiveData<List<TermEntity>> getAllTerms() {
         return allTerms;
     }
+
+    public LiveData<List<CourseEntity>> getAllTermsCourses() {return allTermsCourses; }
 }

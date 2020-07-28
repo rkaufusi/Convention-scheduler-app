@@ -9,8 +9,8 @@ import java.util.Date;
 @Entity(tableName = "assessment_table")
 public class AssessmentEntity {
 
-    @PrimaryKey
-    @NonNull
+    @PrimaryKey(autoGenerate = true)
+    private int assessmentId;
     private String assessmentsTitle;
     private String associatedCourse;
     private Date assessmentDueDate;
@@ -21,9 +21,12 @@ public class AssessmentEntity {
         this.assessmentDueDate = assessmentDueDate;
 
     }
-    // lone setter
+    // assessment Id
 
-    public void setAssessmentsTitle(String assessmentsTitle) {this.assessmentsTitle = assessmentsTitle; }
+    public void setAssessmentId(int assessmentId) { this.assessmentId = assessmentId; }
+
+    public int getAssessmentId() { return assessmentId; }
+
 
     public String getAssociatedCourse() { return associatedCourse; }
 

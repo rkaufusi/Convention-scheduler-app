@@ -15,15 +15,27 @@ public class AppRepository {
     private LiveData<List<CourseEntity>> allCourses;
     private LiveData<List<AssessmentEntity>> allAssessments;
 
+    //private LiveData<List<CourseEntity>> allTermCourses;
+    TermEntity termEntity;
+    private AppDatabase database;
+
+    // test
+
+
     public AppRepository(Application application) {
-        AppDatabase database = AppDatabase.getInstance(application);
+        database = AppDatabase.getInstance(application);
         termDao = database.termDao();
         courseDao = database.courseDao();
         assessmentDao = database.assessmentDao();
 
+
         allTerms = termDao.getAllTerms();
         allCourses = courseDao.getAllCourses();
         allAssessments = assessmentDao.getAllAssessments();
+
+        //allTermCourses = courseDao.getCoursesByTerm(termEntity.getTermTitle());
+
+
     }
     // Term
     public void insert(TermEntity termEntity) {
@@ -39,6 +51,12 @@ public class AppRepository {
         return allTerms;
     }
 
+    // trial
+    /*
+    public List<CourseEntity> getTermCourses(int termId){
+        return database.courseDao().getTermCourses(termId);
+    } */
+
     // Course
     public void insert(CourseEntity courseEntity) {
         new InsertCourseAsyncTask(courseDao).execute(courseEntity);
@@ -52,6 +70,10 @@ public class AppRepository {
     public LiveData<List<CourseEntity>> getAllCourses() {
         return allCourses;
     }
+
+    // test
+    //public LiveData<List<CourseEntity>> getAllTermCourses() { return allTermCourses; }
+
 
     // Assessment
     public void insert(AssessmentEntity assessmentEntity) {

@@ -23,7 +23,7 @@ public class DateConverter {
 
         Date date = null;
         try {
-            date = new SimpleDateFormat("MM/dd/yyyy").parse(dateString);
+            date = new SimpleDateFormat("MM-dd-yyyy").parse(dateString);
         } catch (ParseException e) {
             e.printStackTrace();
         }

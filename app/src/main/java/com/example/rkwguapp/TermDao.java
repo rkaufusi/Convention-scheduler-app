@@ -27,5 +27,5 @@ public interface TermDao {
 
     @Transaction
     @Query("SELECT * FROM term_table")
-    public List<TermCoursesRelation> getTermCoursesRelation();
+    public LiveData<List<TermCoursesRelation>> getTermCoursesRelation();
 }

@@ -9,8 +9,8 @@ import java.util.Date;
 @Entity(tableName = "term_table")
 public class TermEntity {
 
-    @PrimaryKey
-    @NonNull
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String termTitle;
     private Date termStartDate;
     private Date termEndDate;
@@ -22,12 +22,16 @@ public class TermEntity {
         this.termEndDate = termEndDate;
     }
 
-    //public void setTermTitle(String termTitle) {this.termTitle = termTitle; }
+
+    public void setId(int id) { this.id = id; }
+
+    public int getId() { return id; }
 
     public String getTermTitle() { return termTitle; }
 
     public Date getTermStartDate() { return termStartDate; }
 
     public Date getTermEndDate() { return termEndDate; }
+
 
 }

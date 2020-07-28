@@ -26,6 +26,7 @@ import java.util.Locale;
 
 public class AddEditAssessment extends AppCompatActivity {
 
+    public static final String EXTRA_ID_A = "com.example.rkwguapp.EXTRA_ID_A";
     public static final String EXTRA_COURSE = "com.example.rkwguapp.EXTRA_COURSE";
     public static final String EXTRA_ASSESS_TITLE = "com.example.rkwguapp.EXTRA_ASSESS_TITLE";
     public static final String EXTRA_GOAL = "com.example.rkwguapp.EXTRA_GOAL";
@@ -101,7 +102,6 @@ public class AddEditAssessment extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        //menuInflater.inflate(R.menu.add_term_menu, menu);
         menuInflater.inflate(R.menu.assess_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
@@ -123,6 +123,11 @@ public class AddEditAssessment extends AppCompatActivity {
         data.putExtra(EXTRA_COURSE, course);
         data.putExtra(EXTRA_GOAL, goal);
 
+        int id = getIntent().getIntExtra(EXTRA_ID_A, -1);
+        if (id != -1) {
+            data.putExtra(EXTRA_ID_A, id);
+        }
+
         setResult(RESULT_OK, data);
         finish();
 
@@ -132,7 +137,7 @@ public class AddEditAssessment extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
            // case R.id.save_assess:
-            case R.id.save_term:
+            case R.id.save_assess:
                 saveAssessment();
                 return true;
             case R.id.assessment_alert:
@@ -146,7 +151,7 @@ public class AddEditAssessment extends AppCompatActivity {
         }
     }
     private void changeGoal() {
-        String myFormat = "MM/dd/yyyy";
+        String myFormat = "MM-dd-yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         goalDate.setText(sdf.format(c.getTime()));
     }

@@ -7,6 +7,6 @@ import java.util.List;
 
 public class TermCoursesRelation {
     @Embedded public TermEntity termEntity;
-    @Relation(parentColumn = "termTitle", entityColumn = "associatedTerm")
+    @Relation(parentColumn = "termTitle", entityColumn = "associatedTerm", entity = CourseEntity.class)
     public List<CourseEntity> courseEntityList;
 }

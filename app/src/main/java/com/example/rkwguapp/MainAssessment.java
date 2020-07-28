@@ -75,6 +75,7 @@ public class MainAssessment extends AppCompatActivity {
             @Override
             public void onItemClick(AssessmentEntity assessmentEntity) {
                 Intent intent = new Intent(MainAssessment.this, AddEditAssessment.class);
+                intent.putExtra(AddEditAssessment.EXTRA_ID_A, assessmentEntity.getAssessmentId());
                 intent.putExtra(AddEditAssessment.EXTRA_ASSESS_TITLE, assessmentEntity.getAssessmentsTitle());
                 intent.putExtra(AddEditAssessment.EXTRA_COURSE, assessmentEntity.getAssociatedCourse());
 
@@ -105,6 +106,7 @@ public class MainAssessment extends AppCompatActivity {
             Toast.makeText(this, "Assessment Saved", Toast.LENGTH_SHORT).show();
 
         } else if (requestCode == EDIT_ASSESS_REQUEST && resultCode == RESULT_OK) {
+            int id = data.getIntExtra(AddEditAssessment.EXTRA_ID_A, -1);
             String title = data.getStringExtra(AddEditAssessment.EXTRA_ASSESS_TITLE);
             String course = data.getStringExtra(AddEditAssessment.EXTRA_COURSE);
             String goal = data.getStringExtra(AddEditAssessment.EXTRA_GOAL);
@@ -112,8 +114,7 @@ public class MainAssessment extends AppCompatActivity {
             Date date = DateConverter.toDateType(goal);
 
             AssessmentEntity assessmentEntity = new AssessmentEntity(title, course, date);
-            assessmentEntity.setAssessmentsTitle(title);
-
+            assessmentEntity.setAssessmentId(id);
             assessmentViewModel.update(assessmentEntity);
 
             Toast.makeText(this, "Assessment Updated", Toast.LENGTH_SHORT).show();

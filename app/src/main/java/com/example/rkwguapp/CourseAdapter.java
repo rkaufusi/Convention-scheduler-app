@@ -96,6 +96,22 @@ public class CourseAdapter extends ListAdapter<CourseEntity, CourseAdapter.Cours
         void onItemClick(CourseEntity courseEntity);
     }
 
+    private List<CourseEntity> courseList;
+
+    public void setCourses(List<CourseEntity> courses) {
+        courseList = courses;
+        notifyDataSetChanged();
+    }
+/*
+        public int getItemCount() {
+
+        if (courseList != null)
+            return courseList.size();
+
+        else return 0;
+    } */
+
+
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
