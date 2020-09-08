@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rkwguapp">
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,29 +15,49 @@
             android:enabled="true"
             android:exported="true"></receiver>
 
-        <activity android:name=".AddEditAssessment"
-            android:parentActivityName=".MainAssessment"/>
-        <activity android:name=".MainAssessment"
-            android:launchMode="singleTop"/>
+        <receiver
+            android:name=".AlertRecieverEnd"
+            android:enabled="true"
+            android:exported="true"></receiver>
 
-        <activity android:name=".AddEditCourses"
-            android:parentActivityName=".MainCourse"/>
-        <activity android:name=".MainCourse"
-            android:launchMode="singleTop"/>
+        <activity android:name=".WorkshopDetail"
+            android:parentActivityName=".Workshop"/>
 
-        <activity
-            android:name=".AddEditTerm"
-            android:parentActivityName=".MainTerm" />
-        <activity
-            android:name=".MainTerm"
-            android:launchMode="singleTop" />
+        <activity android:name=".Workshop"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".SubjectDetail"
+            android:parentActivityName=".Subject"/>
+
+        <activity android:name=".Subject"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".ConventionDetail"
+            android:parentActivityName=".Convention" />
+
+        <activity android:name=".Convention"
+            android:parentActivityName=".MainActivity" />
+
+        <activity android:name=".NoteDetail"
+            android:parentActivityName=".Note" />
+
+        <activity android:name=".Note"
+            android:parentActivityName=".WorkshopDetail" />
+
+        <activity android:name=".Report"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".MapOfConvention"
+            android:parentActivityName=".MainActivity"/>
 
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

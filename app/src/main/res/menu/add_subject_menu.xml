@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/save_subject"
+        android:icon="@drawable/save_button"
+        android:title="Save"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/share"
+        android:title="Share Note"/>
+
+    <item android:id="@+id/notificationStart"
+        android:title="Set Start Date Alert"/>
+
+    <item android:id="@+id/notificationEnd"
+        android:title="Set End Date Alert"/>
+
+    <item android:id="@+id/delete"
+        android:title="Delete Course"/>
+
+</menu>

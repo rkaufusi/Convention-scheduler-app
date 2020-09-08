@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/gradient">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,14 +17,16 @@
             android:gravity="center"
             android:orientation="vertical">
 
-
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="80dp"
-                android:text="WGU"
-                android:textSize="36dp" />
+                android:text="Your Convention"
+                android:textStyle="bold"
+                android:textColor="#330867"
+
+                android:textSize="30dp" />
 
             <Button
                 android:id="@+id/button"
@@ -31,14 +34,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
                 android:padding="16dp"
-                android:text="Terms" />
+                android:text="Convention" />
 
             <Button
                 android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
-                android:text="Courses" />
+                android:text="Subjects" />
 
             <Button
                 android:id="@+id/button2"
@@ -46,7 +49,32 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="36dp"
-                android:text="Assessments" />
+                android:text="Workshops" />
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="160dp">
+
+            <TextView
+                android:id="@+id/report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report"
+                android:layout_marginEnd="70dp"
+                android:layout_gravity="left"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Map"
+                android:layout_marginStart="70dp"
+                android:textSize="20sp"
+                android:layout_gravity="right"/>
+
+            </TableRow>
 
 
         </LinearLayout>

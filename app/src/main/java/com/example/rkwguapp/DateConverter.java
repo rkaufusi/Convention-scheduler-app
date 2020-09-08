@@ -30,4 +30,16 @@ public class DateConverter {
 
         return date;
     }
+
+    public static Date toTimeStamp(String dateString){
+
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("MM-dd-yyyy HH:mm aa").parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return date;
+    }
 }
