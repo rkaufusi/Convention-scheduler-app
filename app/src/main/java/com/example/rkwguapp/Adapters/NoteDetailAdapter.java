@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rkwguapp.ConventionDetail;
 import com.example.rkwguapp.Entities.NotesEntity;
-import com.example.rkwguapp.Entities.WorkshopEntity;
 import com.example.rkwguapp.R;
 
 import java.util.List;
@@ -20,7 +19,6 @@ public class NoteDetailAdapter extends RecyclerView.Adapter<NoteDetailAdapter.Pa
 
     class PartViewHolder extends RecyclerView.ViewHolder {
         private final TextView partItemView;
-
 
         private PartViewHolder(View itemView) {
             super(itemView);
@@ -31,8 +29,6 @@ public class NoteDetailAdapter extends RecyclerView.Adapter<NoteDetailAdapter.Pa
                     int position = getAdapterPosition();
                     final NotesEntity current = notesList.get(position);
                     Intent intent = new Intent(context, ConventionDetail.class);
-                    //intent.putExtra("EXTRA_TITLE_SUBJECT", current.getSubjectTitle());
-                    // context.startActivity(intent);
                 }
             });
         }

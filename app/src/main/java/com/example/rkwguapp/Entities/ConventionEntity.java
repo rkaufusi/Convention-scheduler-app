@@ -21,7 +21,6 @@ public class ConventionEntity {
         this.conventionEndDate = conventionEndDate;
     }
 
-
     public void setId(int id) { this.id = id; }
 
     public int getId() { return id; }
@@ -31,6 +30,5 @@ public class ConventionEntity {
     public Date getConventionStartDate() { return conventionStartDate; }
 
     public Date getConventionEndDate() { return conventionEndDate; }
-
 
 }

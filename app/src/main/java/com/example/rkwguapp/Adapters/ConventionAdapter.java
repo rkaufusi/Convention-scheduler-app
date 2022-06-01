@@ -95,7 +95,6 @@ public class ConventionAdapter extends ListAdapter<ConventionEntity, ConventionA
         void onItemClick(ConventionEntity ConventionEntity);
     }
 
-
     private List<SubjectEntity> workshopList;
 
     public void setCourses(List<SubjectEntity> courses) {

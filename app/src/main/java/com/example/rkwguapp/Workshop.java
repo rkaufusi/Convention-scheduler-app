@@ -103,15 +103,10 @@ public class Workshop extends AppCompatActivity {
             String startTime = data.getStringExtra(WorkshopDetail.EXTRA_START_TS);
             String endTime = data.getStringExtra((WorkshopDetail.EXTRA_END_TS));
 
-            //Timestamp time = new Timestamp(Long.parseLong(startTime));
-            //Timestamp time2 = new Timestamp(Long.parseLong(endTime));
-
-
             // convert to date
             Date date = DateConverter.toDateType(goal);
             Date dateFinish = DateConverter.toDateType(complete);
             Date ts = DateConverter.toTimeStamp(startTime);
-            //Timestamp dateComplete = DateConverter.toTimeStamp(startTime);
             Date end = DateConverter.toTimeStamp(endTime);
 
             WorkshopEntity WorkshopEntity = new WorkshopEntity(title, course, type, date, dateFinish, ts, end);

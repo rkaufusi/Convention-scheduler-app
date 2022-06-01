@@ -48,8 +48,6 @@ public class NoteAdapter extends ListAdapter<NotesEntity, NoteAdapter.NoteHolder
     public void onBindViewHolder(@NonNull NoteHolder holder, int position) {
         NotesEntity currentNoteEntity = getItem(position);
         holder.textViewsubjectTitle.setText(currentNoteEntity.getNoteTitle());
-       // holder.textViewCourseStart.setText(currentNoteEntity.getNoteBody());
-
     }
 
     public NotesEntity getCourseAt(int position) {
@@ -79,31 +77,6 @@ public class NoteAdapter extends ListAdapter<NotesEntity, NoteAdapter.NoteHolder
     }
 
     private List<NotesEntity> noteList;
-/*
-    @Override
-    public void onBindViewHolder(PartViewHolder holder, int position) {
-        if (noteList != null) {
-            CourseEntity current = noteList.get(position);
-            holder.partItemView.setText(current.getSubjectTitle());
-        } else {
-            // Covers the case of data not being ready yet.
-            holder.partItemView.setText("No Word");
-        }
-    } */
-/*
-    public void setNotes(List<NotesEntity> courses) {
-        noteList = courses;
-        notifyDataSetChanged();
-    }
-
-    // getItemCount() is called many times, and when it is first called,
-    // mWords has not been updated (means initially, it's null, and we can't return null).
-    @Override
-    public int getItemCount() {
-        if (noteList != null)
-            return noteList.size();
-        else return 0;
-    } */
 
     public interface OnItemClickListener {
         void onItemClick(NotesEntity NoteEntity);

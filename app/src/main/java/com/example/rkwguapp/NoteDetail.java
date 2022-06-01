@@ -54,10 +54,8 @@ public class NoteDetail extends AppCompatActivity {
     private TextView mills;
     public WorkshopViewModel workshopViewModel;
 
-
     public NoteViewModel noteViewModel;
     public static int numberOfNotes;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +79,6 @@ public class NoteDetail extends AppCompatActivity {
             setTitle("Edit Note");
             editNoteTitle.setText(intent.getStringExtra(EXTRA_TITLE_NOTE));
             editNoteBody.setText(intent.getStringExtra(EXTRA_BODY));
-           // workshopSpinner.setSelection(adapter.getPosition(intent.getStringExtra(EXTRA_NOTE_WORKSHOP)));
         } else {
             setTitle("Add Note");
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.close_button);
@@ -100,49 +97,6 @@ public class NoteDetail extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
-
-/*
-        final RecyclerView recyclerView = findViewById(R.id.associated_assessments);
-        //final SubjectAdapter adapter = new SubjectAdapter();
-        final SubjectDetailAdapter adapter = new SubjectDetailAdapter(this);
-
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-
-        //subjectViewModel = new ViewModelProvider(this).get(subjectViewModel.class);
-        //subjectViewModel.getAllSubjects().observe(this, new Observer<List<SubjectEntity>>() {
-
-        workshopViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(WorkshopViewModel.class);
-        workshopViewModel.getAllWorkshops().observe(this, new Observer<List<WorkshopEntity>>() {
-            @Override
-            public void onChanged(@Nullable final List<WorkshopEntity> assessments) {
-                List<WorkshopEntity> filteredAssessments = new ArrayList<>();
-
-                for (WorkshopEntity p : assessments) {
-                    String currentCourse = editSubjectTitle.getText().toString();
-                    String associatedConvention = p.getAssociatedSubject();
-
-                    if (associatedConvention.equals(currentCourse)) {
-                        filteredAssessments.add(p);
-                        adapter.setCourses(filteredAssessments);
-                    }
-                    numberOfNotes = filteredAssessments.size();
-
-                }
-            }
-        });
-
-        // button view notes (possibly add a recyclerview to view notes if needed)
-
-        Button buttonNotes = (Button) findViewById(R.id.view_notes);
-        buttonNotes.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Do something in response to button click
-                startActivity(new Intent(SubjectDetail.this, ConventionCourse.class));
-            }
-        }); */
-
     }
 
     @Override

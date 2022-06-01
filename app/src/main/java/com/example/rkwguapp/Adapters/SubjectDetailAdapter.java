@@ -20,7 +20,6 @@ public class SubjectDetailAdapter extends RecyclerView.Adapter<SubjectDetailAdap
     class PartViewHolder extends RecyclerView.ViewHolder {
         private final TextView partItemView;
 
-
         private PartViewHolder(View itemView) {
             super(itemView);
             partItemView = itemView.findViewById(R.id.text_view_subjects);
@@ -30,8 +29,6 @@ public class SubjectDetailAdapter extends RecyclerView.Adapter<SubjectDetailAdap
                     int position = getAdapterPosition();
                     final WorkshopEntity current = workshopList.get(position);
                     Intent intent = new Intent(context, ConventionDetail.class);
-                    //intent.putExtra("EXTRA_TITLE_SUBJECT", current.getSubjectTitle());
-                    // context.startActivity(intent);
                 }
             });
         }

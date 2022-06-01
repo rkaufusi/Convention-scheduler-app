@@ -34,12 +34,6 @@ public class SubjectAdapter extends ListAdapter<SubjectEntity, SubjectAdapter.Su
                     oldItem.getSubjectStartDate().equals(newItem.getSubjectStartDate()) &&
                     oldItem.getSubjectEndDate().equals(newItem.getSubjectEndDate()) &&
                     oldItem.getAssociatedConvention().equals(newItem.getAssociatedConvention());
-                    //&&
-                    //oldItem.getCourseStatus().equals(newItem.getCourseStatus())&&
-                    //oldItem.getCourseMentor().equals(newItem.getCourseMentor())&&
-                    //oldItem.getCourseMentorPhone().equals(newItem.getCourseMentorPhone())&&
-                    //oldItem.getCourseMentorEmail().equals(newItem.getCourseMentorEmail())&&
-                    //oldItem.getCourseNote().equals(newItem.getCourseNote());
         }
     };
 

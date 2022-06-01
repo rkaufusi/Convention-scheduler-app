@@ -95,7 +95,6 @@ public class WorkshopDetail extends AppCompatActivity {
         setContentView(R.layout.activity_workshop_detail);
 
         editWorkshopTitle = findViewById(R.id.edit_text_workshop_title);
-        //editTextCourse = findViewById(R.id.edit_text_assess_course);
         goalDate = findViewById(R.id.text_view_goal);
         roomSpinner = findViewById(R.id.edit_text_type);
         completeDate = findViewById(R.id.text_view_complete);
@@ -175,7 +174,6 @@ public class WorkshopDetail extends AppCompatActivity {
                 c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 changeGoal();
             }
-
         };
 
         goalDate.setOnClickListener(new View.OnClickListener() {
@@ -197,7 +195,6 @@ public class WorkshopDetail extends AppCompatActivity {
                 c2.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 changeEnd();
             }
-
         };
         completeDate.setOnClickListener(new View.OnClickListener() {
 
@@ -209,72 +206,64 @@ public class WorkshopDetail extends AppCompatActivity {
             }
         });
 
+        displayTime = (TextView)findViewById(R.id.start_textview);
 
-            // start time
-            //AccessTime = (Button)findViewById(R.id.button1);
-            displayTime = (TextView)findViewById(R.id.start_textview);
+        displayTime.setOnClickListener(new View.OnClickListener() {
 
-            displayTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendar = Calendar.getInstance();
+                CalendarHour = calendar.get(Calendar.HOUR_OF_DAY);
+                CalendarMinute = calendar.get(Calendar.MINUTE);
 
-                @Override
-                public void onClick(View v) {
+                timepickerdialog = new TimePickerDialog(WorkshopDetail.this, new TimePickerDialog.OnTimeSetListener() {
 
-                    calendar = Calendar.getInstance();
-                    CalendarHour = calendar.get(Calendar.HOUR_OF_DAY);
-                    CalendarMinute = calendar.get(Calendar.MINUTE);
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
-                    timepickerdialog = new TimePickerDialog(WorkshopDetail.this, new TimePickerDialog.OnTimeSetListener() {
+                        int backToInt = 0;
+                        String concatHours = "";
+                        String strHours = "";
+                        String strMin = "";
+                        String concatMin = "";
 
-                                @Override
-                                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        if (hourOfDay == 0) {
+                            hourOfDay += 12;
+                            format = "AM";
+                        }
+                        else if (hourOfDay == 12) {
+                            format = "PM";
+                        }
+                        else if (hourOfDay > 12) {
+                            hourOfDay -= 12;
+                            format = "PM";
+                        }
+                        else {
+                            format = "AM";
+                        }
+                        if (hourOfDay < 10) {
+                            strHours = String.valueOf(hourOfDay);
+                            concatHours = "0" + strHours;
+                        }
+                        else {
+                            concatHours = String.valueOf(hourOfDay);
+                        }
+                        if (minute < 10) {
+                            strMin = String.valueOf(minute);
+                            concatMin = "0" + strMin;
+                        } else {
+                            concatMin = String.valueOf(minute);
+                        }
+                        //backToInt = Integer.parseInt(concatHours);
+                        displayTime.setText(hourOfDay + ":" + concatMin + " " + format);
+                        convertToStringStart = (concatHours + ":" + concatMin  + " " + format);
+                        }
+                    }, CalendarHour, CalendarMinute, false);
+                timepickerdialog.show();
+            }
+        });
 
-                                    int backToInt = 0;
-                                    String concatHours = "";
-                                    String strHours = "";
-                                    String strMin = "";
-                                    String concatMin = "";
-
-                                    if (hourOfDay == 0) {
-                                        hourOfDay += 12;
-                                        format = "AM";
-                                    }
-                                    else if (hourOfDay == 12) {
-                                        format = "PM";
-                                    }
-                                    else if (hourOfDay > 12) {
-                                        hourOfDay -= 12;
-                                        format = "PM";
-                                    }
-                                    else {
-                                        format = "AM";
-                                    }
-
-                                    if (hourOfDay < 10) {
-                                        strHours = String.valueOf(hourOfDay);
-                                        concatHours = "0" + strHours;
-                                    } else {
-                                        concatHours = String.valueOf(hourOfDay);
-                                    }
-
-                                    if (minute < 10) {
-                                        strMin = String.valueOf(minute);
-                                        concatMin = "0" + strMin;
-                                    } else {
-                                        concatMin = String.valueOf(minute);
-                                    }
-                                    //backToInt = Integer.parseInt(concatHours);
-                                    displayTime.setText(hourOfDay + ":" + concatMin + " " + format);
-                                    convertToStringStart = (concatHours + ":" + concatMin  + " " + format);
-                                }
-                            }, CalendarHour, CalendarMinute, false);
-                    timepickerdialog.show();
-
-                }
-            });
-
-            // end time
         endTime = (TextView)findViewById(R.id.end_textview);
-
         endTime.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -296,26 +285,31 @@ public class WorkshopDetail extends AppCompatActivity {
 
                         if (hourOfDay == 0) {
                             hourOfDay += 12;
-                            format = "AM"; }
+                            format = "AM";
+                        }
                         else if (hourOfDay == 12) {
-                            format = "PM"; }
+                            format = "PM";
+                        }
                         else if (hourOfDay > 12) {
                             hourOfDay -= 12;
-                            format = "PM"; }
+                            format = "PM";
+                        }
                         else {
-                            format = "AM"; }
-
+                            format = "AM";
+                        }
                         if (hourOfDay < 10) {
                             strHours = String.valueOf(hourOfDay);
                             concatHours = "0" + strHours;
                         } else {
-                            concatHours = String.valueOf(hourOfDay); }
+                            concatHours = String.valueOf(hourOfDay);
+                        }
 
                         if (minute < 10) {
                             strMin = String.valueOf(minute);
                             concatMin = "0" + strMin;
                         } else {
-                            concatMin = String.valueOf(minute); }
+                            concatMin = String.valueOf(minute);
+                        }
 
                         //backToInt = Integer.parseInt(concatHours);
                         endTime.setText(hourOfDay + ":" + concatMin + " " + format);
@@ -324,39 +318,9 @@ public class WorkshopDetail extends AppCompatActivity {
                     }
                 }, CalendarHour, CalendarMinute, false);
                 timepickerdialog.show();
-
             }
         });
 
-/*
-        final TextView eReminderTime = findViewById(R.id.start_textview);
-
-        eReminderTime.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Calendar mcurrentTime = Calendar.getInstance();
-                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mcurrentTime.get(Calendar.MINUTE);
-                TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(WorkshopDetail.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                       if (selectedHour > 12) {
-                            eReminderTime.setText( (selectedHour -= 12 ) + ":" + selectedMinute + " PM");
-
-
-                        }
-                        eReminderTime.setText( selectedHour + ":" + selectedMinute + " AM");
-                    }
-                }, hour, minute, false);
-                //mTimePicker.setTitle("Select Time");
-                mTimePicker.show();
-
-            }
-        });
-*/
         //populate spinner
         subjectViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(SubjectViewModel.class);
         subjectViewModel.getAllSubjects().observe(this, new Observer<List<SubjectEntity>>() {
@@ -393,22 +357,21 @@ public class WorkshopDetail extends AppCompatActivity {
     }
 
     private void deleteCourse() {
-            workshopViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(WorkshopViewModel.class);
-            workshopViewModel.getAllWorkshops().observe(this, new Observer<List<WorkshopEntity>>() {
-                @Override
-                public void onChanged(@Nullable final List<WorkshopEntity> words) {
-                    List<WorkshopEntity> filteredWords = new ArrayList<>();
-                    for (WorkshopEntity p : words){
-                        if (p.getWorkshopTitle().equals(editWorkshopTitle.getText().toString())) {
-
-                            workshopViewModel.delete(p);
-                            Toast.makeText(getApplicationContext(), "Workshop Deleted", Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(WorkshopDetail.this, Workshop.class);
-                            startActivity(i);
-                        }
+        workshopViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(WorkshopViewModel.class);
+        workshopViewModel.getAllWorkshops().observe(this, new Observer<List<WorkshopEntity>>() {
+            @Override
+            public void onChanged(@Nullable final List<WorkshopEntity> words) {
+                List<WorkshopEntity> filteredWords = new ArrayList<>();
+                for (WorkshopEntity p : words){
+                    if (p.getWorkshopTitle().equals(editWorkshopTitle.getText().toString())) {
+                        workshopViewModel.delete(p);
+                        Toast.makeText(getApplicationContext(), "Workshop Deleted", Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(WorkshopDetail.this, Workshop.class);
+                        startActivity(i);
                     }
                 }
-            });
+            }
+        });
     }
 
     private void saveAssessment() throws ParseException {
@@ -506,5 +469,4 @@ public class WorkshopDetail extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         completeDate.setText(sdf.format(c2.getTime()));
     }
-
 }

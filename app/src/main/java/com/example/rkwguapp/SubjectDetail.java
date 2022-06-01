@@ -169,16 +169,6 @@ public class SubjectDetail extends AppCompatActivity {
             }
         });
 
-        // button view notes (possibly add a recyclerview to view notes if needed)
-        /*
-        Button buttonNotes = (Button) findViewById(R.id.view_notes);
-        buttonNotes.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Do something in response to button click
-                startActivity(new Intent(SubjectDetail.this, ConventionCourse.class));
-            }
-        }); */
-
     }
 
     @Override

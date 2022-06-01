@@ -37,5 +37,4 @@ public class ConventionViewModel extends AndroidViewModel {
         return allConventions;
     }
 
-    public LiveData<List<SubjectEntity>> getAllConventionsCourses() {return allConventionsCourses; }
 }

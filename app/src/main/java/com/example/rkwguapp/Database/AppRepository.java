@@ -29,7 +29,6 @@ public class AppRepository {
     ConventionEntity ConventionEntity;
     private AppDatabase database;
 
-    // test
     public AppRepository(Application application) {
         database = AppDatabase.getInstance(application);
         ConventionDao = database.ConventionDao();
@@ -41,7 +40,6 @@ public class AppRepository {
         allSubjects = SubjectDao.getAllSubjects();
         allWorkshops = WorkshopDao.getAllWorkshops();
         allNotes = NotesDao.getAllNotes();
-
     }
     // Convention
     public void insert(ConventionEntity ConventionEntity) {
@@ -213,7 +211,6 @@ public class AppRepository {
             return null;
         }
     }
-
 
     // Note AsyncTasks
     private static class InsertNoteAsyncTask extends AsyncTask<NotesEntity, Void, Void> {

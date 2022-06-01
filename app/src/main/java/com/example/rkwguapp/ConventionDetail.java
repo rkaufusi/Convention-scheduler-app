@@ -41,8 +41,6 @@ public class ConventionDetail extends AppCompatActivity {
     public static final String EXTRA_DATE = "com.example.rkwguapp.EXTRA_DATE";
     public static final String EXTRA_DATE2 = "com.example.rkwguapp.EXTRA_DATE2";
 
-
-
     private List<SubjectEntity> subjectData = new ArrayList<>();
 
     final Calendar c = Calendar.getInstance();
@@ -130,15 +128,11 @@ public class ConventionDetail extends AppCompatActivity {
         //---------populate recyclerview with Convention Subjects---------
 
         final RecyclerView recyclerView = findViewById(R.id.associated_subjects);
-        //final SubjectAdapter adapter = new SubjectAdapter();
         final ConventionDetailAdapter adapter = new ConventionDetailAdapter(this);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-
-        //subjectViewModel = new ViewModelProvider(this).get(subjectViewModel.class);
-        //subjectViewModel.getAllSubjects().observe(this, new Observer<List<SubjectEntity>>() {
 
         subjectViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(SubjectViewModel.class);
         subjectViewModel.getAllSubjects().observe(this, new Observer<List<SubjectEntity>>() {

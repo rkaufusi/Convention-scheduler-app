@@ -66,16 +66,6 @@ public class Report extends AppCompatActivity {
         TextView view6 = new TextView(Report.this);
         view6.setText("End Time ");
         row.addView(view6);
-        /*
-        TextView view7 = new TextView(this);
-        view7.setText("Convention ");
-        row.addView(view7);
-        TextView view8 = new TextView(this);
-        view8.setText("Start Date ");
-        row.addView(view8);
-        TextView view9 = new TextView(this);
-        view9.setText("End Date ");
-        row.addView(view9);*/
         layout.addView(row);
 
         workshopViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(WorkshopViewModel.class);
